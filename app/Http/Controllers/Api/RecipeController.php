@@ -10,10 +10,10 @@ class RecipeController extends Controller
 {
     //
     public function index(){
-        return Recipe::all();
+        return Recipe::with('category','tags', 'user')->get();
     }
 
     public function show($id){
-        return Recipe::find($id);
+        return Recipe::find($id)->load('category','tags', 'user');
     }
 }

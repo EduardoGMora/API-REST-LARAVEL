@@ -10,10 +10,10 @@ class TagController extends Controller
 {
     //
     public function index(){
-        return Tag::all();
+        return Tag::with('recipes')->get();
     }
 
     public function show($id){
-        return Tag::find($id);
+        return Tag::find($id)->load('recipes');
     }
 }
