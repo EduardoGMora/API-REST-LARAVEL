@@ -6,14 +6,19 @@ use App\Models\Tag;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+// add resources
+use App\Http\Resources\TagResource;
+use App\Http\Resources\TagCollection;
+
 class TagController extends Controller
 {
     //
     public function index(){
-        return Tag::with('recipes')->get();
+        return new TagCollection(Tag::all());
     }
 
     public function show($id){
-        return Tag::find($id)->load('recipes');
+        $tag = Tag::find($id)->load('recipes');
+        return new TagResource($tag);
     }
 }
