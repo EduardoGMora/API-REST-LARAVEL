@@ -19,8 +19,6 @@ class TagResource extends JsonResource
             'type' => 'tag',
             'attributes' => [
                 'name' => $this->name,
-                'created_at' => $this->created_at,
-                'updated_at' => $this->updated_at
             ],
             'relationships' => [
                 'recipes' => $this->recipes,

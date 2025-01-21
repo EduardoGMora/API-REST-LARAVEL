@@ -8,13 +8,13 @@ use App\Http\Controllers\Controller;
 
 // add resources
 use App\Http\Resources\RecipeResource;
-use App\Http\Resources\RecipeCollection;
 
 class RecipeController extends Controller
 {
     // show all recipes
     public function index(){
-        return new RecipeCollection(Recipe::all());
+        $recipes = Recipe::with('category','tags', 'user')->get();
+        return RecipeResource::collection($recipes);
     }
 
     // store new recipe

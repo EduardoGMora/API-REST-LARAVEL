@@ -8,13 +8,12 @@ use App\Http\Controllers\Controller;
 
 // add resources
 use App\Http\Resources\TagResource;
-use App\Http\Resources\TagCollection;
 
 class TagController extends Controller
 {
     //
     public function index(){
-        return new TagCollection(Tag::all());
+        return TagResource::collection(Tag::with('recipes')->get());
     }
 
     public function show($id){
