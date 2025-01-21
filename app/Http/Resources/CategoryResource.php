@@ -5,6 +5,9 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
+// add resources
+use App\Http\Resources\RecipeResource;
+
 class CategoryResource extends JsonResource
 {
     /**
@@ -22,7 +25,7 @@ class CategoryResource extends JsonResource
                     'updated_at' => $this->updated_at,
                 ],
                 'relationships' => [
-                    'recipes' => $this->recipes,
+                    'recipes' => RecipeResource::collection($this->recipes),
                 ],
                 ];
     }
