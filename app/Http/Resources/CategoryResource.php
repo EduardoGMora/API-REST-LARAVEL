@@ -18,6 +18,8 @@ class CategoryResource extends JsonResource
                 'type' => 'category',
                 'attributes' => [
                     'name' => $this->name,
+                    'created_at' => $this->created_at,
+                    'updated_at' => $this->updated_at,
                 ],
                 'relationships' => [
                     'recipes' => $this->recipes,
