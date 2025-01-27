@@ -23,7 +23,6 @@ class StoreRecipeRequest extends FormRequest
     {
         return [
             'category_id'   => 'required|exists:categories,id',
-            'user_id'       => 'required|exists:users,id',
             'title'         => 'required|string|min:3|max:255',
             'description'   => 'required|string|max:255',
             'ingredients'   => 'required|string',

@@ -20,7 +20,7 @@ class RecipeController extends Controller
 
     // store new recipe
     public function store(StoreRecipeRequest $request){
-        $recipe = Recipe::create($request->all());
+        $recipe = $request->user()->recipes()->create($request->all());
 
         $recipe->tags()->attach(json_decode($request->tags));
         $recipe->load('category', 'tags', 'user');
