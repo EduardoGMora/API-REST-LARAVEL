@@ -19,7 +19,7 @@ class CategoryController extends Controller
     }
 
     public function show($id){
-        $category = Category::find($id)->load('recipes');
+        $category = Category::find($id)->load('recipes.category','recipes.tags', 'recipes.user');
         return new CategoryResource($category);
     }
 }
